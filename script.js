@@ -169,6 +169,14 @@ function hideLoadingOverlay() {
     document.getElementById('loadingOverlay').style.display = 'none';
 }
 
+function shortenToZamboanga(address) {
+    const idx = address.indexOf('Zamboanga City');
+    if (idx !== -1) {
+        return address.slice(0, idx + 'Zamboanga City'.length);
+    }
+    return address; // fallback to full address if not found
+}
+
 function updateCurrentAddress(lat, lng) {
     const addressP = document.getElementById('currentAddress');
     addressP.textContent = 'Loading address...';
@@ -177,7 +185,7 @@ function updateCurrentAddress(lat, lng) {
         .then(res => res.json())
         .then(data => {
             if (data && data.display_name) {
-                addressP.textContent = data.display_name;
+                addressP.textContent = shortenToZamboanga(data.display_name);
             } else {
                 addressP.textContent = 'Address not found.';
             }
@@ -297,7 +305,7 @@ function updateDestinationAddress(lat, lng) {
         .then(res => res.json())
         .then(data => {
             if (data && data.display_name) {
-                addressP.textContent = data.display_name;
+                addressP.textContent = shortenToZamboanga(data.display_name);
             } else {
                 addressP.textContent = 'Address not found.';
             }
