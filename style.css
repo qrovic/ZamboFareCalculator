@@ -309,16 +309,15 @@ button.disabled {
   margin-right: 6px;
 }
 .route-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 18px;
   background: #fff;
   border-radius: 14px;
   padding: 24px 20px 18px 20px;
   margin-bottom: 18px;
   box-shadow: 0 4px 24px rgba(39,174,96,0.10);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-  text-align: left;
   position: relative;
 }
 .route-accent {
@@ -346,10 +345,18 @@ button.disabled {
   color: #219150;
 }
 .route-icon.trike {
-  font-size: 1.5em;
+  font-size: 1.6em;
   color: #27ae60;
   margin: 0 0 0 2px;
   align-self: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+  z-index: 2;
+  padding: 2px;
 }
 .route-label {
   font-size: 0.85em;
@@ -368,18 +375,19 @@ button.disabled {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 32px;
+  height: 54px;
   margin-left: 7px;
   margin-bottom: 0;
   margin-top: 0;
   position: relative;
+  justify-content: center;
 }
 .route-line {
-  display: block;
-  width: 2px;
-  height: 32px;
-  background: #c8c8c8;
-  border-radius: 1px;
+  width: 2.5px;
+  height: 54px;
+  background: none;
+  border-left: 2.5px dotted #c8e6d4;
+  margin: 0;
 }
 .route-details {
   font-size: 1.1em;
@@ -478,4 +486,16 @@ button.disabled {
   h2{
     font-size: 1.2rem;
   }
+}
+.route-icons-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 8px;
+}
+.route-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }

@@ -361,31 +361,33 @@ toStep4Btn.addEventListener('click', (e) => {
     const destAddr = document.getElementById('destinationAddress').textContent;
     resultDiv.innerHTML = `
       <div class="route-summary">
-        <div class="route-accent"></div>
-        <div class="route-point">
+        <div class="route-icons-column">
           <span class="route-icon start">&#9679;</span>
-          <div>
-            <div class="route-label">Current Location</div>
-            <div class="route-address">${currentAddr}</div>
-          </div>
-        </div>
-        <div class="route-connector">
           <span class="route-line"></span>
-          <span class="route-icon trike" title="Tricycle" aria-label="Tricycle">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;"><path d="M3 17V15.5C3 14.12 4.12 13 5.5 13H7V17H3Z" fill="#27ae60"/><rect x="7" y="7" width="10" height="10" rx="2" fill="#eafaf1"/><rect x="8.5" y="8.5" width="7" height="7" rx="1" fill="#27ae60"/><circle cx="7" cy="19" r="2" fill="#27ae60"/><circle cx="17" cy="19" r="2" fill="#27ae60"/></svg>
+          <span class="route-icon end" title="Destination" aria-label="Destination">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#219150" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+            </svg>
           </span>
         </div>
-        <div class="route-point">
-          <span class="route-icon end">&#9679;</span>
-          <div>
-            <div class="route-label">Destination</div>
-            <div class="route-address">${destAddr}</div>
-            <div class="distance-below">Distance: ${dist.toFixed(2)} km</div>
+        <div class="route-info-column">
+          <div class="route-point">
+            <div>
+              <div class="route-label">Current Location</div>
+              <div class="route-address">${currentAddr}</div>
+            </div>
+          </div>
+          <div class="route-point">
+            <div>
+              <div class="route-label">Destination</div>
+              <div class="route-address">${destAddr}</div>
+              <div class="distance-below">Distance: ${dist.toFixed(2)} km</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="route-details">
-        <div class="fare"><span class="fare-label"></span>₱${fare.toFixed(2)}</div>
+        <div class="fare"><span class="fare-label">Fare</span>₱${fare.toFixed(2)}</div>
       </div>
     `;
     showStep(3);
