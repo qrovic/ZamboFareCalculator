@@ -3,7 +3,7 @@ body, .container, input, select, button, h1, h2, h3, h4, h5, h6, label, .step-in
 }
 .container {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 20px;
     background: #fff;
     border-radius: 12px;
@@ -14,7 +14,7 @@ h2{
 }
 .progress-bar {
   width: 100%;
-  margin: 0 auto 32px auto;
+  margin: 0 auto 10px auto;
   padding: 0 0 18px 0;
 }
 .progress-track {
@@ -443,4 +443,29 @@ button.disabled {
 }
 .location-header .route-label {
   margin-bottom: 0;
+}
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+.app-logo {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+.app-subtitle {
+  text-align: center;
+  font-size: 1.05em;
+  color: #888;
+  font-weight: 500;
+  margin-top: -10px;
+  margin-bottom: 35px;
+  letter-spacing: 0.2px;
+}
+.app-title {
+  margin: 0;
 } 

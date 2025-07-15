@@ -102,7 +102,7 @@ function initCurrentMap() {
     mapDiv.innerHTML = '';
     console.log('Initializing currentMap');
     console.log('currentMap container size before:', mapDiv.offsetWidth, mapDiv.offsetHeight);
-    currentMap = L.map('currentMap').setView([7.0731, 125.6128], 13);
+    currentMap = L.map('currentMap').setView([6.9214, 122.0790], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(currentMap);
@@ -219,7 +219,7 @@ function initDestinationMap() {
     mapDiv.innerHTML = '';
     console.log('Initializing destinationMap');
     console.log('destinationMap container size before:', mapDiv.offsetWidth, mapDiv.offsetHeight);
-    destinationMap = L.map('destinationMap').setView([7.0731, 125.6128], 13);
+    destinationMap = L.map('destinationMap').setView([6.9214, 122.0790], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(destinationMap);
