@@ -96,6 +96,11 @@ toStep2Btn.addEventListener('click', () => {
     showStep(1);
 });
 
+const zamboangaBounds = L.latLngBounds([
+  [6.78, 121.90], // More southwest
+  [8, 122.32]  // Northeast, covers Lubigan but not Zamboanga del Norte
+]);
+
 // Step 2: Current Location
 function initCurrentMap() {
     const mapDiv = document.getElementById('currentMap');
@@ -103,10 +108,15 @@ function initCurrentMap() {
     console.log('Initializing currentMap');
     console.log('currentMap container size before:', mapDiv.offsetWidth, mapDiv.offsetHeight);
     currentMap = L.map('currentMap').setView([6.9214, 122.0790], 13);
+    currentMap.setMaxBounds(zamboangaBounds);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(currentMap);
     currentMap.on('click', function(e) {
+        if (!zamboangaBounds.contains(e.latlng)) {
+            alert('Please select a location within Zamboanga City.');
+            return;
+        }
         console.log('Current location set by click:', e.latlng);
         setCurrentMarker(e.latlng.lat, e.latlng.lng);
         toStep3Btn.classList.remove('disabled');
@@ -125,6 +135,11 @@ function initCurrentMap() {
     currentMap.addControl(currentSearch);
     currentMap.on('geosearch/showlocation', function(result) {
         const { x: lng, y: lat } = result.location;
+        const latlng = L.latLng(lat, lng);
+        if (!zamboangaBounds.contains(latlng)) {
+            alert('Please select a location within Zamboanga City.');
+            return;
+        }
         console.log('Current location set by search:', { lat, lng });
         setCurrentMarker(lat, lng);
         currentMap.setView([lat, lng], 15);
@@ -220,10 +235,15 @@ function initDestinationMap() {
     console.log('Initializing destinationMap');
     console.log('destinationMap container size before:', mapDiv.offsetWidth, mapDiv.offsetHeight);
     destinationMap = L.map('destinationMap').setView([6.9214, 122.0790], 13);
+    destinationMap.setMaxBounds(zamboangaBounds);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(destinationMap);
     destinationMap.on('click', function(e) {
+        if (!zamboangaBounds.contains(e.latlng)) {
+            alert('Please select a location within Zamboanga City.');
+            return;
+        }
         console.log('Destination set by click:', e.latlng);
         setDestinationMarker(e.latlng.lat, e.latlng.lng);
         toStep4Btn.classList.remove('disabled');
@@ -242,6 +262,11 @@ function initDestinationMap() {
     destinationMap.addControl(destinationSearch);
     destinationMap.on('geosearch/showlocation', function(result) {
         const { x: lng, y: lat } = result.location;
+        const latlng = L.latLng(lat, lng);
+        if (!zamboangaBounds.contains(latlng)) {
+            alert('Please select a location within Zamboanga City.');
+            return;
+        }
         console.log('Destination set by search:', { lat, lng });
         setDestinationMarker(lat, lng);
         destinationMap.setView([lat, lng], 15);

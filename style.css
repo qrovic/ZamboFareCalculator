@@ -453,8 +453,8 @@ button.disabled {
   margin-bottom: 18px;
 }
 .app-logo {
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   object-fit: contain;
 }
 .app-subtitle {
@@ -468,4 +468,11 @@ button.disabled {
 }
 .app-title {
   margin: 0;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 } 
+
+@media (max-width: 768px) {
+  .app-subtitle {
+    margin-bottom: 50px !important;
+  }
+}
