@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Fare Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
+</head>
+<body>
+    <div class="container">
+        <div id="loadingOverlay" class="loading-overlay" style="display:none;">
+          <div class="spinner"></div>
+          <div class="loading-text">Loading address...</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-steps">
+              <div class="progress-step" id="progressStep1"><span>1</span><div class="progress-label">Passengers</div></div>
+              <div class="progress-step" id="progressStep2"><span>2</span><div class="progress-label">Current</div></div>
+              <div class="progress-step" id="progressStep3"><span>3</span><div class="progress-label">Destination</div></div>
+              <div class="progress-step" id="progressStep4"><span>4</span><div class="progress-label">Result</div></div>
+            </div>
+          </div>
+        </div>
+        <div id="step1" class="step-card active">
+            <h2>Number of Passengers</h2>
+            <label for="passengerCount">Select number of passengers:</label>
+            <select id="passengerCount">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select>
+            <button id="toStep2Btn">Next</button>
+        </div>
+        <div id="step2" class="step-card">
+            <div class="location-header">
+                <div class="route-label">Current Location</div>
+                <button id="locateMeBtn" type="button" title="Locate Me" aria-label="Locate Me">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" style="margin-right:8px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" fill="currentColor"/></svg>
+                    Locate Me
+                </button>
+            </div>
+            <div id="currentMap" class="map"></div>
+            <p id="currentAddress" class="address-display"></p>
+            <button id="toStep3Btn">Next</button>
+        </div>
+        <div id="step3" class="step-card">
+            <div class="location-header">
+                <div class="route-label">Destination</div>
+                <button id="locateMeDestBtn" type="button" title="Locate Me" aria-label="Locate Me">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" style="margin-right:8px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" fill="currentColor"/></svg>
+                    Locate Me
+                </button>
+            </div>
+            <div class="map-section">
+                <div id="destinationMap" class="map"></div>
+                <p id="destinationAddress" class="address-display"></p>
+            </div>
+            <button id="toStep4Btn">Show Fare</button>
+        </div>
+        <div id="step4" class="step-card">
+            <h2>Result</h2>
+            <div id="result"></div>
+            <button id="restartBtn">Start Over</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
